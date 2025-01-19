@@ -1,59 +1,86 @@
-# uwu
- 探针,windows版
+# 我的网站监控面板
 
-**重要提示：**
+## 项目描述
 
-*   确保你已经安装了 Python 和 `requests`、`apscheduler` 库。
-*   将 `your_email@example.com`, `your_email_password`, `your_receiver@example.com`, 和 `smtp.example.com` 替换成你自己的邮箱配置。
-*   你需要根据你的实际情况修改 `config.ini` 中的路径和参数。
+这是一个简单的网站监控面板，可以实时显示网站的运行状态。它可以监控多个网站，并显示每个网站的在线状态、响应时间、以及其他详细信息。
 
-**4. 配置步骤 (Windows 计划任务):**
+## 技术栈
 
-1.  **创建 `runyun_probe` 目录，例如 `C:\runyun_probe\`。**
-2.  **将 `config.ini`, `probe.py`, `utils.py` 和 `uploader.py` 保存到 `C:\runyun_probe\`。**
-3.  **创建 `logs` 目录，例如 `C:\logs\`。**
-4.  **打开“任务计划程序”：**
-    *   在 Windows 搜索栏中输入 “任务计划程序”，然后打开它。
-5.  **创建基本任务：**
-    *   在右侧的 “操作” 面板中，点击 “创建基本任务...”。
-    *   输入任务名称，例如 “Runyun Probe”。
-    *   点击 “下一步”。
-6.  **设置触发器：**
-    *   选择 “每天”，点击 “下一步”。
-    *   设置 “开始时间” 为你希望任务开始运行的时间。
-    *   设置 “重复时间” 为 1 分钟，持续时间为“无限期”。
-    *   点击 “下一步”。
-7.  **设置操作：**
-    *   选择 “启动程序”，点击 “下一步”。
-    *   在 “程序或脚本” 输入框中，输入你的 Python 解释器路径，例如 `C:\Python310\python.exe` (你需要替换成你的实际路径)。
-    *   在 “添加参数” 输入框中，输入你的 `probe.py` 脚本路径，例如 `C:\runyun_probe\probe.py`。
-    *   点击 “下一步”。
-8.  **完成任务创建：**
-    *   点击 “完成”。
+*   **Python:** 后端开发语言
+*   **Flask:** Python Web 框架
+*   **HTML:** 页面结构
+*   **CSS:** 页面样式
+*   **JavaScript:** 页面交互
 
-**5. 配置步骤 (Windows 计划任务 - 被测端触发)：**
+## 安装步骤
 
-1.  **打开“任务计划程序”：**
-    *   在 Windows 搜索栏中输入 “任务计划程序”，然后打开它。
-2.  **创建基本任务：**
-    *   在右侧的 “操作” 面板中，点击 “创建基本任务...”。
-    *   输入任务名称，例如 “Runyun Uploader”。
-    *   点击 “下一步”。
-3.  **设置触发器：**
-    *   选择 “每天”，点击 “下一步”。
-    *   设置 “开始时间” 为你希望任务开始运行的时间。
-    *   设置 “重复时间” 为 1 分钟，持续时间为“无限期”。
-    *   点击 “下一步”。
-4.  **设置操作：**
-    *   选择 “启动程序”，点击 “下一步”。
-    *   在 “程序或脚本” 输入框中，输入你的 Python 解释器路径，例如 `C:\Python310\python.exe` (你需要替换成你的实际路径)。
-    *   在 “添加参数” 输入框中，输入你的 `uploader.py` 脚本路径，例如 `C:\runyun_probe\uploader.py`。
-    *   点击 “下一步”。
-5.  **完成任务创建：**
-    *   点击 “完成”。
+1.  **克隆仓库：**
+    ```bash
+    git clone https://github.com/yuhold/uwu.git
+    ```
+2.  **进入项目目录：**
+    ```bash
+    cd uwu
+    ```
+3.  **创建虚拟环境 (推荐):**
+    ```bash
+    python -m venv venv
+    ```
+4.  **激活虚拟环境：**
+    *   **Linux/macOS:**
+        ```bash
+        source venv/bin/activate
+        ```
+    *   **Windows:**
+        ```bash
+        venv\Scripts\activate
+        ```
+5.  **安装依赖项：**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-**6. 检查运行情况：**
+## 运行步骤
 
-*   **查看日志：** 打开 `C:\logs\runyun_probe.log` 文件，查看探针的运行日志。
-*   **查看 uploader 日志：**  打开 `C:\logs\uploader.log` 文件，查看 uploader 的运行日志。
-*   **在“任务计划程序”中查看任务状态：** 检查任务是否正常运行，是否有错误信息。
+1.  **启动 Flask 应用：**
+    ```bash
+    python app.py
+    ```
+2.  **在浏览器中访问：**
+    打开浏览器，访问 `http://127.0.0.1:5000`。
+
+## 使用说明
+
+*   监控面板会实时显示你配置的网站的运行状态。
+*   每个网站的状态信息会以卡片的形式显示，包括网站地址、状态、时间、以及详情。
+*   不同的状态会使用不同的颜色指示，例如：
+    *   绿色表示在线
+    *   红色表示离线
+    *   黄色表示运行中
+    *   蓝色表示成功
+    *   灰色表示失败
+
+## 贡献指南
+
+如果你想为这个项目贡献代码，请按照以下步骤操作：
+
+1.  **Fork 仓库**
+2.  **创建新的分支：**
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+3.  **修改代码并提交：**
+    ```bash
+    git add .
+    git commit -m "Add your commit message"
+    ```
+4.  **推送分支：**
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+5.  **创建 Pull Request**
+
+## 许可证
+
+本项目使用 MIT 许可证。
+
