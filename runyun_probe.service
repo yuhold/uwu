@@ -1,0 +1,12 @@
+[Unit]
+Description=Runyun Website Probe Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/path/to/your/script/directory # 替换成你的脚本目录
+ExecStart=/usr/bin/python3 /path/to/your/script/probe.py  # 替换成你的 probe.py 路径
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
