@@ -42,11 +42,19 @@
 
 ## 运行步骤
 
-1.  **启动 Flask 应用：**
+1.  **启动 probe 服务:**
     ```bash
+    cd run_probe_service
+    python run_probe.py
+    ```
+
+2.  **启动 Flask 应用：**
+    ```bash
+    cd ../webapp
     python app.py
     ```
-2.  **在浏览器中访问：**
+
+3.  **在浏览器中访问：**
     打开浏览器，访问 `http://127.0.0.1:5000`。
 
 ## 使用说明
@@ -83,4 +91,3 @@
 ## 许可证
 
 本项目使用 MIT 许可证。
-
