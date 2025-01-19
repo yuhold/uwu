@@ -2,10 +2,11 @@ import logging
 import smtplib
 from email.mime.text import MIMEText
 import configparser
+import traceback
 
 def load_config(config_path):
     config = configparser.ConfigParser()
-    config.read(config_path, encoding='utf-8') # 添加 encoding 参数
+    config.read(config_path, encoding='utf-8')
     return config
 
 def send_email(config, message):
@@ -29,5 +30,7 @@ def send_email(config, message):
         smtp_server.send_message(msg)
         smtp_server.quit()
         logging.info("Email notification sent successfully.")
+        return True
     except Exception as e:
-        logging.error(f"Failed to send email: {e}")
+        logging.error(f"Failed to send email: {e}\n{traceback.format_exc()}")
+        return False
