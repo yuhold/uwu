@@ -1,0 +1,73 @@
+body {
+    background-color: #f0f0f0; /* 设置背景颜色 */
+    background-image: 
+        radial-gradient(circle at 0 0, rgba(200, 230, 255, 0.2) 20px, transparent 20px),
+        radial-gradient(circle at 20px 20px, rgba(200, 230, 255, 0.2) 20px, transparent 20px);
+    background-size: 40px 40px; /* 设置波浪大小 */
+    font-family: 'Arial', sans-serif; /* 使用 Arial 字体 */
+    color: #333; /* 设置文字颜色为深灰色 */
+    margin: 20px; /* 设置页面外边距 */
+}
+
+h1 {
+    text-align: center; /* 标题居中 */
+    margin-bottom: 20px; /* 标题下边距 */
+    color: #333; /* 设置标题颜色为深灰色 */
+}
+
+#status-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px; /* 卡片间距 */
+}
+
+.status-card {
+    background-color: #fff; /* 卡片背景颜色 */
+    border: 1px solid #ddd; /* 卡片边框 */
+    padding: 20px; /* 卡片内边距 */
+    border-radius: 8px; /* 卡片圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 卡片阴影 */
+    transition: box-shadow 0.3s ease; /* 添加过渡效果 */
+}
+
+.status-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 鼠标悬停时阴影加深 */
+}
+
+.status-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px; /* 标题下边距 */
+    color: #333; /* 设置标题颜色为深灰色 */
+}
+
+.status-card p {
+    margin-bottom: 5px; /* 段落下边距 */
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.status-indicator.online {
+    background-color: #28a745; /* 在线状态颜色 */
+}
+
+.status-indicator.offline {
+    background-color: #dc3545; /* 离线状态颜色 */
+}
+
+.status-indicator.running {
+    background-color: #ffc107; /* 运行中状态颜色 */
+}
+
+.status-indicator.success {
+    background-color: #17a2b8; /* 成功状态颜色 */
+}
+.status-indicator.failed{
+    background-color: #6c757d;
+}

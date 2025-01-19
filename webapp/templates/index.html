@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的监控面板</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <h1>我的网站监控面板</h1>
+    <p>以下显示了网站的实时监控状态。</p>
+    <div id="status-container">
+        <!-- 状态信息将在这里动态插入 -->
+    </div>
+   <script>
+        fetch("/api/status")
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('status-container');
+                let html = '';
+                for (const key in data) {
+                    if (key.startsWith("http://") || key.startsWith("https://")) {
+                        const item = data[key];
+                        let statusClass = 'default';
+                        if (item.status === "online") {
+                            statusClass = "online";
+                        } else if (item.status === "offline") {
+                            statusClass = "offline";
+                        } else if (item.status === "running") {
+                            statusClass = "running";
+                        } else if (item.status === "success") {
+                            statusClass = "success";
+                        } else if (item.status === "failed") {
+                            statusClass = "failed";
+                        }
+                        html += `
+                            <div class="status-card">
+                                <h2>${key}</h2>
+                                <p>
+                                    状态: <span class="status-indicator ${statusClass}"></span>${item.status}
+                                </p>
+                                <p>时间: ${item.time}</p>
+                                <p>详情: ${item.details ? item.details : ''}</p>
+                            </div>
+                        `;
+                    }
+                }
+                container.innerHTML = html;
+            })
+            .catch(error => console.error("Error fetching status:", error));
+    </script>
+</body>
+</html>
