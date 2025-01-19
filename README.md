@@ -44,8 +44,7 @@
 
 1.  **启动 probe 服务:**
     ```bash
-    cd run_probe_service
-    python run_probe.py
+    python probe.py
     ```
 
 2.  **启动 Flask 应用：**
