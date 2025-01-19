@@ -5,7 +5,7 @@ import configparser
 
 def load_config(config_path):
     config = configparser.ConfigParser()
-    config.read(config_path)
+    config.read(config_path, encoding='utf-8') # 添加 encoding 参数
     return config
 
 def send_email(config, message):
